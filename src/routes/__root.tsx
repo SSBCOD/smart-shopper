@@ -1,8 +1,6 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
-import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
@@ -29,44 +27,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Smart Shop — Ақылды сатып алу тізімі" },
-      { name: "description", content: "Smart Shopping List — сатып алуларды жоспарлауға арналған интернет-дүкен" },
-      { property: "og:title", content: "Smart Shop — Ақылды сатып алу тізімі" },
-      { name: "twitter:title", content: "Smart Shop — Ақылды сатып алу тізімі" },
-      { property: "og:description", content: "Smart Shopping List — сатып алуларды жоспарлауға арналған интернет-дүкен" },
-      { name: "twitter:description", content: "Smart Shopping List — сатып алуларды жоспарлауға арналған интернет-дүкен" },
-      { name: "twitter:card", content: "summary" },
-      { property: "og:type", content: "website" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="kk">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return (
